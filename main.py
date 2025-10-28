@@ -1,6 +1,8 @@
 from pyray import *
 from raylib import *
 import random
+#Ajouter jeu circulaire + réactivité + bombe toutes les dix pommes (qui disparait après deux pommes mangées)
+
 SIDE= 40
 WIDTH = 21
 HEIGHT = 21
@@ -30,6 +32,7 @@ while not window_should_close() and not perdu:
     elif new_head==Spomme:
         Spomme=[random.randint(0,WIDTH-1), random.randint(0,HEIGHT-1)]
         s=s+20
+        k=k+1
     else:  
         snake=snake[1:]
     snake=snake+[new_head]
@@ -59,7 +62,7 @@ while not window_should_close() and not perdu:
         print("Perdu")
     #DESSIN
     
-    draw_text(f"Score {s}",0,0,10,WHITE)
+    draw_text(f"Score {s}",0,0,50,WHITE)
     print(f"Score : {s}")
     if k%5==0:
         draw_rectangle(Spomme[0]*SIDE,Spomme[1]*SIDE,SIDE-2,SIDE-2,YELLOW)
