@@ -5,7 +5,7 @@ SIDE= 40
 WIDTH = 21
 HEIGHT = 21
 init_window(SIDE*WIDTH,SIDE*HEIGHT,"Mon jeu")
-set_target_fps(60)
+set_target_fps(10)
 
 snake=[[1,1], [2,1],[3,1]]
 vitesse=[1,0]
@@ -29,6 +29,7 @@ while not window_should_close() and not perdu:
         k=k+1
     elif new_head==Spomme:
         Spomme=[random.randint(0,WIDTH-1), random.randint(0,HEIGHT-1)]
+        s=s+20
     else:  
         snake=snake[1:]
     snake=snake+[new_head]
@@ -57,15 +58,15 @@ while not window_should_close() and not perdu:
         perdu=True
         print("Perdu")
     #DESSIN
-    if N%6==0:
-        draw_text(f"Score {s}",0,0,10,WHITE)
-        print(f"Score : {s}")
-        if k%5==0:
-            draw_circle(Spomme[0]*SIDE,Spomme[1]*SIDE,SIDE-2,SIDE-2,YELLOW)
-        draw_circle(fruit[0]*SIDE,fruit[1]*SIDE,SIDE-2,SIDE-2,RED)
-        for i,(x,y) in enumerate(snake):
-            color=GREEN if i==len(snake)-1 else DARKGREEN
-            draw_rectangle(x*SIDE,y*SIDE,SIDE-2,SIDE-2,color)
+    
+    draw_text(f"Score {s}",0,0,10,WHITE)
+    print(f"Score : {s}")
+    if k%5==0:
+        draw_rectangle(Spomme[0]*SIDE,Spomme[1]*SIDE,SIDE-2,SIDE-2,YELLOW)
+    draw_rectangle(fruit[0]*SIDE,fruit[1]*SIDE,SIDE-2,SIDE-2,RED)
+    for i,(x,y) in enumerate(snake):
+        color=GREEN if i==len(snake)-1 else DARKGREEN
+        draw_rectangle(x*SIDE,y*SIDE,SIDE-2,SIDE-2,color)    
     N=N+1
     
     end_drawing()
