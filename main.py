@@ -103,7 +103,7 @@ while not window_should_close():
             fruit = [WIDTH//2, HEIGHT//2]
             Spomme=[random.randint(0,WIDTH-1),random.randint(0,HEIGHT-1)]
             Bombe=[random.randint(0,WIDTH-1),random.randint(0,HEIGHT-1)]
-            while Bombe in {[3,1],[4,1],[5,1]}: #Eviter la bombe dès le début de partie
+            while Bombe in [[3,1],[4,1],[5,1]]: #Eviter la bombe dès le début de partie
                 Bombe=[random.randint(0,WIDTH-1),random.randint(0,HEIGHT-1)]
             s=0
             k=0
